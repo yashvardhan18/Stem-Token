@@ -11,10 +11,10 @@ contract stemToken is ERC20,Ownable{
     uint256 maxBurn;
     uint256 quarter = 90 days;
     mapping(uint => uint256)public quarterAmount; 
-    constructor()ERC20("STEM_Token","STEM"){
+    constructor(uint256 amount)ERC20("STEM_Token","STEM"){
         _mint(owner(),112000000*10**decimals());
         startTime = block.timestamp;
-        maxBurn = 56000000*10**decimals();
+        maxBurn = amount*10**decimals();
     }
 
     function burn(address account,uint256 _amount) external virtual onlyOwner{
